@@ -26,6 +26,9 @@ class Player {
     // Key collection state
     this.keysCollected = 0;
 
+    // Gate tracking state
+    this.gatesPassed = 0;
+
     // Smooth movement state
     this.moving = false; // true while moving between tiles
     this.targetR = null;
@@ -52,6 +55,7 @@ class Player {
   // Reset key state for a new level
   resetKey() {
     this.keysCollected = 0;
+    this.gatesPassed = 0;
   }
 
   // Convert grid coords to pixel center (for drawing a circle).
@@ -179,6 +183,7 @@ class Player {
 
     if (level.isGate(this.r, this.c)) {
       this.keysCollected = Math.max(0, this.keysCollected - 1);
+      this.gatesPassed++;
       level.grid[this.r][this.c] = 0;
     }
     this.arrivedThisFrame = false;

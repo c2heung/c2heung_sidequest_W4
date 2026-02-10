@@ -102,7 +102,8 @@ function drawHUD() {
   // Right side: gate count
   textAlign(RIGHT);
   fill(0);
-  text(`Gates: ${player.keysCollected}/3`, width - 10, 16);
+  const gatesRemaining = 3 - player.gatesPassed;
+  text(`Gates: ${gatesRemaining}/3`, width - 10, 16);
 }
 
 function drawStartScreen() {
@@ -110,7 +111,11 @@ function drawStartScreen() {
   fill(255);
   textAlign(CENTER, CENTER);
   textSize(28);
-  text("Collect the keys to unlock the gates and reach the goal", width / 2, height / 2 - 20);
+  text(
+    "Collect the keys to unlock the gates and reach the goal",
+    width / 2,
+    height / 2 - 20,
+  );
   textSize(16);
   text("Press any key to begin", width / 2, height / 2 + 30);
   // reset alignment and size for HUD
